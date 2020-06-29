@@ -1,0 +1,696 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>组成原理知识点 | JusticeLee's Blog</title><meta name="description" content="计算机组成原理重点author ：JusticeLee 重磅福利！重磅福利！重磅福利！往年期末试卷下载&gt;&gt;&gt;&gt;    组成原理多合一    2015A卷  2015B卷第一章  计算机系统概论 没什么好说的看看就行，基本上都是一些常识性质的     掌握 理解 了解    1.2.2 计算机的硬件框图 1.2.1 冯诺依曼计算机的特点 1.1 计算机系统的简介   1.3"><meta name="keywords" content="有趣的灵魂万中无一"><meta name="author" content="JusticeLee"><meta name="copyright" content="JusticeLee"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://justicelee.top/2020/06/28/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E9%87%8D%E7%82%B9/"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin="crossorigin"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta property="og:type" content="article"><meta property="og:title" content="组成原理知识点"><meta property="og:url" content="http://justicelee.top/2020/06/28/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E9%87%8D%E7%82%B9/"><meta property="og:site_name" content="JusticeLee's Blog"><meta property="og:description" content="计算机组成原理重点author ：JusticeLee 重磅福利！重磅福利！重磅福利！往年期末试卷下载&gt;&gt;&gt;&gt;    组成原理多合一    2015A卷  2015B卷第一章  计算机系统概论 没什么好说的看看就行，基本上都是一些常识性质的     掌握 理解 了解    1.2.2 计算机的硬件框图 1.2.1 冯诺依曼计算机的特点 1.1 计算机系统的简介   1.3"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/leeJustice/Blog-source@master/img/20200628140210.png"><meta property="article:published_time" content="2020-06-28T06:06:30.000Z"><meta property="article:modified_time" content="2020-06-28T06:07:32.606Z"><meta name="twitter:card" content="summary"><script>var activateDarkMode = function () {
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000')
+  }
+}
+var activateLightMode = function () {
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fff')
+  }
+}
+
+var getCookies = function (name) {
+  const value = `; ${document.cookie}`
+  const parts = value.split(`; ${name}=`)
+  if (parts.length === 2) return parts.pop().split(';').shift()
+}
+
+var autoChangeMode = 'false'
+var t = getCookies('theme')
+if (autoChangeMode === '1') {
+  var isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+  var isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+  var isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+  if (t === undefined) {
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport) {
+      console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+      var now = new Date()
+      var hour = now.getHours()
+      var isNight = hour <= 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+    }
+    window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+      if (Cookies.get('theme') === undefined) {
+        e.matches ? activateDarkMode() : activateLightMode()
+      }
+    })
+  } else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else if (autoChangeMode === '2') {
+  now = new Date()
+  hour = now.getHours()
+  isNight = hour <= 6 || hour >= 18
+  if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else {
+  if (t === 'dark') activateDarkMode()
+  else if (t === 'light') activateLightMode()
+}</script><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="prev" title="pain" href="http://justicelee.top/2020/06/28/pain/"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  bookmark: {
+    message_prev: '按',
+    message_next: '键将本页加入书签'
+  },
+  runtime_unit: '天',
+  runtime: false,
+  copyright: {"languages":{"author":"作者: JusticeLee","link":"链接: ","source":"来源: JusticeLee's Blog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  ClickShowText: undefined,
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: undefined,
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  baiduPush: false,
+  highlightCopy: true,
+  highlightLang: true,
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: false    
+}</script><script>var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isSidebar: true
+  }</script><noscript><style>
+#nav {
+  opacity: 1
+}
+.justified-gallery img{
+  opacity: 1
+}
+</style></noscript><meta name="generator" content="Hexo 4.2.1"></head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="https://cdn.jsdelivr.net/gh/leeJustice/Blog-source@master/img/touxiang.gif" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">6</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">3</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">1</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/gallery/"><i class="fa-fw fas fa-photo-video"></i><span> Gallery</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down menus-expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><i class="fas fa-arrow-right on" id="toggle-sidebar"></i><div id="sidebar"><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#计算机组成原理重点"><span class="toc-number">1.</span> <span class="toc-text">计算机组成原理重点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#重磅福利！重磅福利！重磅福利！往年期末试卷下载-gt-gt-gt-gt-组成原理多合一-2015A卷-2015B卷"><span class="toc-number">1.1.</span> <span class="toc-text">重磅福利！重磅福利！重磅福利！往年期末试卷下载&gt;&gt;&gt;&gt;    组成原理多合一    2015A卷  2015B卷</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第一章-计算机系统概论"><span class="toc-number">1.2.</span> <span class="toc-text">第一章  计算机系统概论</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-2-计算机的硬件框图-掌握"><span class="toc-number">1.2.1.</span> <span class="toc-text">1.2.2 计算机的硬件框图(掌握)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-计算机硬件的主要技术指标-掌握"><span class="toc-number">1.2.2.</span> <span class="toc-text">1.3 计算机硬件的主要技术指标(掌握)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-1-冯诺依曼计算机的特点-理解"><span class="toc-number">1.2.3.</span> <span class="toc-text">1.2.1 冯诺依曼计算机的特点(理解)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-3-计算机的工作步骤-理解"><span class="toc-number">1.2.4.</span> <span class="toc-text">1.2.3 计算机的工作步骤(理解)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-计算机系统的简介"><span class="toc-number">1.2.5.</span> <span class="toc-text">1.1 计算机系统的简介</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-1-1-计算机的软硬件概念"><span class="toc-number">1.2.5.1.</span> <span class="toc-text">1.1.1 计算机的软硬件概念</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-1-2-计算机系统的层次结构"><span class="toc-number">1.2.5.2.</span> <span class="toc-text">1.1.2 计算机系统的层次结构</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-1-3-计算机组成和计算机体系结构"><span class="toc-number">1.2.5.3.</span> <span class="toc-text">1.1.3  计算机组成和计算机体系结构</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第二章-计算机的发展及应用"><span class="toc-number">1.3.</span> <span class="toc-text">第二章 计算机的发展及应用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-计算机的发展史-了解"><span class="toc-number">1.3.1.</span> <span class="toc-text">2.1 计算机的发展史(了解)</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#2-1-1-计算机的产生和发展"><span class="toc-number">1.3.1.1.</span> <span class="toc-text">2.1.1 计算机的产生和发展</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-计算机的应用-了解"><span class="toc-number">1.3.2.</span> <span class="toc-text">2.2 计算机的应用(了解)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-计算机的展望-了解"><span class="toc-number">1.3.3.</span> <span class="toc-text">2.3 计算机的展望(了解)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第三章-总线系统"><span class="toc-number">1.4.</span> <span class="toc-text">第三章  总线系统</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-4-1-单总线结构-掌握"><span class="toc-number">1.4.1.</span> <span class="toc-text">3.4.1 单总线结构(掌握)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-4-2-多总线结构-掌握"><span class="toc-number">1.4.2.</span> <span class="toc-text">3.4.2 多总线结构(掌握)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-5-1-总线的判优控制-掌握"><span class="toc-number">1.4.3.</span> <span class="toc-text">3.5.1 总线的判优控制(掌握)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-总线的基本概念-理解"><span class="toc-number">1.4.4.</span> <span class="toc-text">3.1 总线的基本概念(理解)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-总线的分类-理解"><span class="toc-number">1.4.5.</span> <span class="toc-text">3.2 总线的分类(理解)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3-总线特性及性能指标-理解"><span class="toc-number">1.4.6.</span> <span class="toc-text">3.3 总线特性及性能指标(理解)</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#3-3-1-总线特性"><span class="toc-number">1.4.6.1.</span> <span class="toc-text">3.3.1 总线特性</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-3-2-性能指标"><span class="toc-number">1.4.6.2.</span> <span class="toc-text">3.3.2 性能指标</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-5-2-总线通信控制-了解"><span class="toc-number">1.4.7.</span> <span class="toc-text">3.5.2 总线通信控制(了解)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第四章-存储器"><span class="toc-number">1.5.</span> <span class="toc-text">第四章 存储器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-5-存储器与CPU的连接-扩容-掌握"><span class="toc-number">1.5.1.</span> <span class="toc-text">4.2.5 存储器与CPU的连接-扩容(掌握)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-3-高速缓冲存储器-掌握"><span class="toc-number">1.5.2.</span> <span class="toc-text">4.3 高速缓冲存储器(掌握)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-概述-理解"><span class="toc-number">1.5.3.</span> <span class="toc-text">4.1 概述(理解)</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#4-1-1-存储器分类"><span class="toc-number">1.5.3.1.</span> <span class="toc-text">4.1.1 存储器分类</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-3-随机存取存储器-理解"><span class="toc-number">1.5.4.</span> <span class="toc-text">4.2.3 随机存取存储器(理解)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-4-只读存储器-理解"><span class="toc-number">1.5.5.</span> <span class="toc-text">4.2.4 只读存储器(理解)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-6存储器的校验-理解"><span class="toc-number">1.5.6.</span> <span class="toc-text">4.2.6存储器的校验(理解)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-4-辅助存储器-了解"><span class="toc-number">1.5.7.</span> <span class="toc-text">4.4 辅助存储器(了解)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第五章-输入输出系统"><span class="toc-number">1.6.</span> <span class="toc-text">第五章 输入输出系统</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#5-5-程序中断方式-掌握"><span class="toc-number">1.6.1.</span> <span class="toc-text">5.5 程序中断方式(掌握)</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#5-5-1-中断的概念"><span class="toc-number">1.6.1.1.</span> <span class="toc-text">5.5.1 中断的概念</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-5-2-I-O中断的产生"><span class="toc-number">1.6.1.2.</span> <span class="toc-text">5.5.2 I&#x2F;O中断的产生</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-5-3-程序中断方式的接口电路"><span class="toc-number">1.6.1.3.</span> <span class="toc-text">5.5.3 程序中断方式的接口电路</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-5-4-I-O中断处理过程"><span class="toc-number">1.6.1.4.</span> <span class="toc-text">5.5.4 I&#x2F;O中断处理过程</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-5-5-中断服务程序的流程"><span class="toc-number">1.6.1.5.</span> <span class="toc-text">5.5.5 中断服务程序的流程</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-6-DMA方式-掌握"><span class="toc-number">1.6.2.</span> <span class="toc-text">5.6 DMA方式(掌握)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-1-概述-理解"><span class="toc-number">1.6.3.</span> <span class="toc-text">5.1 概述(理解)</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#5-1-1-输入输出系统的发展概况"><span class="toc-number">1.6.3.1.</span> <span class="toc-text">5.1.1 输入输出系统的发展概况</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-1-2-输入输出系统的组成"><span class="toc-number">1.6.3.2.</span> <span class="toc-text">5.1.2 输入输出系统的组成</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-1-4-I-O-设备与主机信息传送的控制方式"><span class="toc-number">1.6.3.3.</span> <span class="toc-text">5.1.4 I&#x2F;O 设备与主机信息传送的控制方式</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-4-程序查询方式-理解"><span class="toc-number">1.6.4.</span> <span class="toc-text">5.4 程序查询方式(理解)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-2-I-O-设备-了解"><span class="toc-number">1.6.5.</span> <span class="toc-text">5.2 I&#x2F;O 设备(了解)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第六章-计算机的运算方法"><span class="toc-number">1.7.</span> <span class="toc-text">第六章 计算机的运算方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第六章-计算机的运算方法-1"><span class="toc-number">1.8.</span> <span class="toc-text">第六章 计算机的运算方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#6-2-数的定点表示和浮点表示"><span class="toc-number">1.8.1.</span> <span class="toc-text">6.2 数的定点表示和浮点表示</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#6-2-1-数的定点表示"><span class="toc-number">1.8.1.1.</span> <span class="toc-text">6.2.1 数的定点表示</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6-2-2-数的浮点表示"><span class="toc-number">1.8.1.2.</span> <span class="toc-text">6.2.2 数的浮点表示</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6-2-3-定点数和浮点数的比较"><span class="toc-number">1.8.1.3.</span> <span class="toc-text">6.2.3 定点数和浮点数的比较</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#IEE754标准的浮点数的表示方法"><span class="toc-number">1.8.1.4.</span> <span class="toc-text">IEE754标准的浮点数的表示方法</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-3-2-定点数加减运算"><span class="toc-number">1.8.2.</span> <span class="toc-text">6.3.2 定点数加减运算</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-3-3-乘法运算"><span class="toc-number">1.8.3.</span> <span class="toc-text">6.3.3 乘法运算</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第七章-指令系统"><span class="toc-number">1.9.</span> <span class="toc-text">第七章 指令系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第八章-CPU的结构与功能"><span class="toc-number">1.10.</span> <span class="toc-text">第八章 CPU的结构与功能</span></a></li></ol></li></ol></div></div></div><div id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://cdn.jsdelivr.net/gh/leeJustice/Blog-source@master/img/20200628140210.png)"><nav id="nav"><span class="pull-left" id="blog_name"><a class="blog_title" id="site-name" href="/">JusticeLee's Blog</a></span><span class="pull-right menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/gallery/"><i class="fa-fw fas fa-photo-video"></i><span> Gallery</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down menus-expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><span class="toggle-menu close"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><div id="post-title"><div class="posttitle">组成原理知识点</div></div><div id="post-meta"><div class="meta-firstline"><time class="post-meta__date"><span class="post-meta__date-created" title="发表于 2020-06-28 14:06:30"><i class="far fa-calendar-alt fa-fw"></i> 发表于 2020-06-28</span><span class="post-meta__separator">|</span><span class="post-meta__date-updated" title="更新于 2020-06-28 14:07:32"><i class="fas fa-history fa-fw"></i> 更新于 2020-06-28</span></time></div><div class="meta-secondline"> </div><div class="meta-thirdline"><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta__icon"></i><span>阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-commentcount"></span></div></div></div></header><main class="layout_post" id="content-inner"><article id="post"><div class="post-content" id="article-container"><h2 id="计算机组成原理重点"><a href="#计算机组成原理重点" class="headerlink" title="计算机组成原理重点"></a>计算机组成原理重点</h2><p>author ：JusticeLee</p>
+<h3 id="重磅福利！重磅福利！重磅福利！往年期末试卷下载-gt-gt-gt-gt-组成原理多合一-2015A卷-2015B卷"><a href="#重磅福利！重磅福利！重磅福利！往年期末试卷下载-gt-gt-gt-gt-组成原理多合一-2015A卷-2015B卷" class="headerlink" title="重磅福利！重磅福利！重磅福利！往年期末试卷下载&gt;&gt;&gt;&gt;    组成原理多合一    2015A卷  2015B卷"></a>重磅福利！重磅福利！重磅福利！往年期末试卷下载&gt;&gt;&gt;&gt;   <a href="![](https://cdn.jsdelivr.net/gh/leeJustice/Blog-source@master/img/中断处理过程2.png)%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E6%89%80%E6%9C%89.docx"> 组成原理多合一</a>    <a href="https://github.com/leeJustice/Blog-source/blob/master/%E5%88%98%E7%BA%AF%E6%AF%85%EF%BC%9A15%E6%98%A5%E4%B8%80%E6%9C%AC%E7%BB%84%E6%88%90A%E5%8D%B7.doc?raw=true" target="_blank" rel="noopener">2015A卷</a>  <a href="https://github.com/leeJustice/Blog-source/blob/master/%E5%88%98%E7%BA%AF%E6%AF%85%EF%BC%9A15%E6%98%A5%E4%B8%80%E6%9C%AC%E7%BB%84%E6%88%90B%E5%8D%B7.doc?raw=true" target="_blank" rel="noopener">2015B卷</a></h3><h3 id="第一章-计算机系统概论"><a href="#第一章-计算机系统概论" class="headerlink" title="第一章  计算机系统概论"></a>第一章  计算机系统概论</h3><ul>
+<li>没什么好说的看看就行，基本上都是一些<code>常识</code>性质的</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">掌握</th>
+<th align="left">理解</th>
+<th align="left">了解</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">1.2.2 计算机的硬件框图</td>
+<td align="left">1.2.1 冯诺依曼计算机的特点</td>
+<td align="left">1.1 计算机系统的简介</td>
+</tr>
+<tr>
+<td align="left">1.3 计算机硬件的主要技术指标(会算)</td>
+<td align="left">1.2.3 计算机的工作步骤</td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+<a id="more"></a>
+
+<h4 id="1-2-2-计算机的硬件框图-掌握"><a href="#1-2-2-计算机的硬件框图-掌握" class="headerlink" title="1.2.2 计算机的硬件框图(掌握)"></a>1.2.2 计算机的硬件框图(掌握)</h4><img src= "/img/loading.gif" data-src="https://cdn.jsdelivr.net/gh/leeJustice/Blog-source@master/img/计算机硬件框图.png" alt="硬件框图" style="zoom:50%;" />
+
+<h4 id="1-3-计算机硬件的主要技术指标-掌握"><a href="#1-3-计算机硬件的主要技术指标-掌握" class="headerlink" title="1.3 计算机硬件的主要技术指标(掌握)"></a>1.3 计算机硬件的主要技术指标(掌握)</h4><ul>
+<li><code>机器字长</code>：机器字长是指CPU 一次能处理数据的位数，通常与CPU 的寄存器位数有关。</li>
+<li><code>存储容量</code>：存储器的容量应该包括主存容量和辅存容量。<ul>
+<li>主存容量：主存中存放二进制代码的总位数。存储容量＝存储单元个数 x 存储字长</li>
+<li>辅存容童通常用字节数来表示。1G = 1024M = $2^{10}$ * $2^{20}$B</li>
+</ul>
+</li>
+<li><code>运算速度</code>：CPI(单位时间内执行指令的平均条数)。或者是FLOPS(浮点运算次数每秒）</li>
+</ul>
+<h4 id="1-2-1-冯诺依曼计算机的特点-理解"><a href="#1-2-1-冯诺依曼计算机的特点-理解" class="headerlink" title="1.2.1 冯诺依曼计算机的特点(理解)"></a>1.2.1 冯诺依曼计算机的特点(理解)</h4><ul>
+<li>计算机由运算器、存储器、控制器、输入设备和输出设备五大部件组成。</li>
+<li>指令和数据以同等地位存放于存储器内，并可按地址寻访。</li>
+<li>指令和数据均用二进制数表示。</li>
+<li>指令由操作码和地址码组成，操作码用来表示操作的性质，地址码用来表示操作数在存储器中的位置。</li>
+<li>指令在存储器内按顺序存放。通常，指令是顺序执行的，在特定条件下，可根据运算结果或根据设定的条件改变执行顺序。</li>
+<li>机器以运算器为中心，输入输出设备与存储器间的数据传送通过运算器完成。</li>
+</ul>
+<h4 id="1-2-3-计算机的工作步骤-理解"><a href="#1-2-3-计算机的工作步骤-理解" class="headerlink" title="1.2.3 计算机的工作步骤(理解)"></a>1.2.3 计算机的工作步骤(理解)</h4><ul>
+<li>上机前的准备：建立数学模型、确定计算方法和编制解题程序。</li>
+<li>上机运行：通过主存储器、运算器、控制器、I/O设备等完成工作。</li>
+</ul>
+<h4 id="1-1-计算机系统的简介"><a href="#1-1-计算机系统的简介" class="headerlink" title="1.1 计算机系统的简介"></a>1.1 计算机系统的简介</h4><h5 id="1-1-1-计算机的软硬件概念"><a href="#1-1-1-计算机的软硬件概念" class="headerlink" title="1.1.1 计算机的软硬件概念"></a>1.1.1 计算机的软硬件概念</h5><p>计算机系统由“硬件”和“软件”两大部分组成。</p>
+<ul>
+<li>所谓“硬件”，是指计算机的实体部分，它由看得见摸得蓿的各种电子元器件，各类光、电、机设备的实物组成，如主机、外部设备等。</li>
+<li>所谓“软件”，它看不见摸不着，由人们事先编制的具有各类特殊功能的程序组成。通常把这些程序寄寓予各类媒体（如RAM.,.ROM.、磁带、磁盘、光盘，甚至纸带等），它们通常存放在计算机的主存或辅存内。</li>
+</ul>
+<h5 id="1-1-2-计算机系统的层次结构"><a href="#1-1-2-计算机系统的层次结构" class="headerlink" title="1.1.2 计算机系统的层次结构"></a>1.1.2 计算机系统的层次结构</h5><p><img src= "/img/loading.gif" data-src="https://cdn.jsdelivr.net/gh/leeJustice/Blog-source@master/img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%B1%82%E6%AC%A1%E7%BB%93%E6%9E%84.png" alt="计算机系统的层次结构"></p>
+<p>M5: 应用语言机器 – 应用语言<br>M4: 高级语言机器 – 高级语言<br>M3: 操作系统机器 – 作业控制语言<br>M2: 汇编语言机器 – 汇编语言<br>M1: 传统机器 – 机器指令系统<br>M0: 微程序机器 – 微指令系统</p>
+<h5 id="1-1-3-计算机组成和计算机体系结构"><a href="#1-1-3-计算机组成和计算机体系结构" class="headerlink" title="1.1.3  计算机组成和计算机体系结构"></a>1.1.3  计算机组成和计算机体系结构</h5><ul>
+<li>计算机体系结构是指那些能够被程序员所见到的计算机系统的属性，即概念性的结构与功能特性。</li>
+<li>计算机组成是指如何实现计算机体系结构所体现的属性，它包含了许多对程序员来说是透<br>明的硬件细节。</li>
+</ul>
+<h3 id="第二章-计算机的发展及应用"><a href="#第二章-计算机的发展及应用" class="headerlink" title="第二章 计算机的发展及应用"></a>第二章 计算机的发展及应用</h3><ul>
+<li>(<code>了解即可</code>整个这一章的内容都不是很重要)</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">了解</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">2.1 计算机的发展史</td>
+</tr>
+<tr>
+<td align="center">2.2 计算机的应用</td>
+</tr>
+<tr>
+<td align="center">2.3 计算机的展望</td>
+</tr>
+</tbody></table>
+<h4 id="2-1-计算机的发展史-了解"><a href="#2-1-计算机的发展史-了解" class="headerlink" title="2.1 计算机的发展史(了解)"></a>2.1 计算机的发展史(了解)</h4><h5 id="2-1-1-计算机的产生和发展"><a href="#2-1-1-计算机的产生和发展" class="headerlink" title="2.1.1 计算机的产生和发展"></a>2.1.1 计算机的产生和发展</h5><ul>
+<li><code>第一代电子管计算机</code></li>
+<li><code>第二代晶体管计算机</code></li>
+<li><code>第三代集成电路计算机</code></li>
+</ul>
+<h4 id="2-2-计算机的应用-了解"><a href="#2-2-计算机的应用-了解" class="headerlink" title="2.2 计算机的应用(了解)"></a>2.2 计算机的应用(了解)</h4><ul>
+<li><code>科学计算和数据处理</code>：预测天气、制作报表。</li>
+<li><code>工业控制和实时控制</code>：传感器、机床。</li>
+<li><code>网络技术的应用</code>：电子商务、网络教育、敏捷制造。</li>
+<li><code>虚拟现实</code>：VR技术等。</li>
+<li><code>办公自动化和管理信息系统</code>：文秘、财务、人事、资料。</li>
+<li><code>CAD/CAM/CIMS</code>：产品设计。</li>
+<li><code>多媒体技术</code>：计算机技术和视频、音频及通信等技术相结合的产物。</li>
+<li><code>人工智能</code>：使计算机来模拟人的智能的技术。</li>
+</ul>
+<h4 id="2-3-计算机的展望-了解"><a href="#2-3-计算机的展望-了解" class="headerlink" title="2.3 计算机的展望(了解)"></a>2.3 计算机的展望(了解)</h4><p>略。</p>
+<h3 id="第三章-总线系统"><a href="#第三章-总线系统" class="headerlink" title="第三章  总线系统"></a>第三章  总线系统</h3><ul>
+<li>(<code>次重点</code>，但是也挺重要的)</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">掌握</th>
+<th align="left">理解</th>
+<th align="left">了解</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">3.4.1 单总线结构</td>
+<td align="left">3.1 总线的基本概念</td>
+<td align="left">3.5.2 总线通信控制</td>
+</tr>
+<tr>
+<td align="left">3.4.2 多总线结构</td>
+<td align="left">3.2 总线的分类</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">3.5.1 总线的判优控制</td>
+<td align="left">3.3 总线特性及性能指标</td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+<h4 id="3-4-1-单总线结构-掌握"><a href="#3-4-1-单总线结构-掌握" class="headerlink" title="3.4.1 单总线结构(掌握)"></a>3.4.1 单总线结构(掌握)</h4><p><img src= "/img/loading.gif" data-src="https://cdn.jsdelivr.net/gh/leeJustice/Blog-source@master/img/20200625135315.png" alt="单总线结构"></p>
+<p>图3.2 是单总线结构的示意，它是将CPU 、主存、I/O设备（通过I/O接口）都挂在一组总线上，允许I/O 设备之间、I/O设备与CPU 之间或I/O设备与主存之间直接交换信息。这种结构简单，也便于扩充，但所有的传送都通过这组共享总线，因此极易形成计算机系统的瓶颈。它也不允许两个以上的部件在同一时刻向总线传输信息，这就必然会影响系统工作效率的提高。这类总线多数被小型计算机或微型计算机所采用。</p>
+<h4 id="3-4-2-多总线结构-掌握"><a href="#3-4-2-多总线结构-掌握" class="headerlink" title="3.4.2 多总线结构(掌握)"></a>3.4.2 多总线结构(掌握)</h4><ul>
+<li><p><code>双总线结构</code></p>
+<p><img src= "/img/loading.gif" data-src="https://cdn.jsdelivr.net/gh/leeJustice/Blog-source@master/img/%E5%8F%8C%E6%80%BB%E7%BA%BF%E7%BB%93%E6%9E%84.png" alt="双总线结构"></p>
+<p>双总线结构的特点是将速度较低的I/O 设备从单总线上分离出来，形成主存总线与I/O总线分开的结构。图中通道是一个具有特殊功能的处理器， CPU 将一部分功能下放给通道，使其对I/O设备具有统一管理的功能，以完成外部设备与主存储器之间的数据传送，其系统的吞吐能力可以相当大。这种结构大多用于大、中型计算机系统。</p>
+</li>
+<li><p><code>三总线结构</code></p>
+<p><img src= "/img/loading.gif" data-src="https://cdn.jsdelivr.net/gh/leeJustice/Blog-source@master/img/%E4%B8%89%E6%80%BB%E7%BA%BF.png" alt="三总线结构"></p>
+<p>图3.8 中主存总线用于CPU 与主存之间的传输；I/O总线供CPU 与各类I/0 设备之间传递信息； DMA 总线用于高速I/O 设备（磁盘、磁带等）与主存之间直接交换信息。在三总线结构中，任一时刻只能使用一种总线。主存总线与DMA 总线不能同时对主存进行存取，I/O 总线只有在CPU 执行I/O指令时才能用到。</p>
+</li>
+<li><p><code>四总线结构</code></p>
+<p><img src= "/img/loading.gif" data-src="https://cdn.jsdelivr.net/gh/leeJustice/Blog-source@master/img/%E5%9B%9B%E6%80%BB%E7%BA%BF%E7%BB%93%E6%9E%84.png" alt="四总线结构"></p>
+<p>在这里又增加了一条与计算机系统紧密相连的高速总线。在高速总线上挂接了一些高速 I/O 设备，如高速局域网、图形工作站、多媒体、SCSI 等。它们通过Cache 控制机构中的高速总线桥或高速缓冲器与系统总线和局部总线相连，使得这些高速设备与CPU更密切。而一些较低速的设备如图文传真FAX 、调制解调器及串行接口仍然挂在扩展总线上，并由扩展总线接口与高速总线相连。这种结构对高速设备而言，其自身的工作可以很少依赖CPU，同时它们又比扩展总线上的设备更贴近CPU,可见对于高性能设备与CPU来说，各自的效率将获得更大的提高。在这种结构中，CPU 、高速总线的速度以及各自信号线的定义完全可以不同，以至各自改变其结构也不会影响高速总线的正常工作，反之亦然。</p>
+</li>
+</ul>
+<h4 id="3-5-1-总线的判优控制-掌握"><a href="#3-5-1-总线的判优控制-掌握" class="headerlink" title="3.5.1 总线的判优控制(掌握)"></a>3.5.1 总线的判优控制(掌握)</h4><p>总线判优控制可分<code>集中式</code>和<code>分布式</code>两种，前者将控制逻辑集中在一处（如在CPU 中），后者将控制逻辑分散在与总线连接的各个部件或设备上。</p>
+<p>常见的集中式控制优先权方式有以下三种：</p>
+<ul>
+<li><code>链式查询</code>：在链式查询中，离总线控制部件最近的设备具有最高的优先级。这种方式的特点是：只需很少几根线就能按一定优先次序实现总线控制，并且很容易扩充设备，但对电路故障很敏感，且优先级别低的设备可能很难获得请求。</li>
+<li><code>计数器定时查询</code>：当某个请求占用总线的设备地址与计数值一致时，便获得总线使用权，此时终止计数查询。这种方式的特点是：计数可以从“0“ 开始，此时一旦设备的优先次序被固定，设备的优先级就按0,1, …，n 的顺序降序排列，而且固定不变；计数也可以从上一次计数的终止点开始，即是一种循环方法，此时设备使用总线的优先级相等；计数器的初始值还可由程序设置，故优先次序可以改变。这种方式对电路故障不如链式查询方式敏感，但增加了控制线（设备地址）数，控制也较复杂。</li>
+<li><code>独立请求方式</code>：每一台设备均有一对总线请求线BR和总线同意线BG 。当设备要求使用总线时，便发出该设备的请求信号。总线控制部件中有一排队电路，可根据优先次序确定响应哪一台设备的请求。这种方式的特点是：响应速度快，优先次序控制灵活（通过程序改变），但控制线数量多，总线控制更复杂。链式查询中仅用两根线确定总线使用权属于哪个设备，在计数器查询中大致用$\log_2 n$ 根线，其中n是允许接纳的最大设备数，而独立请求方式需采用2n 根线。</li>
+</ul>
+<img src= "/img/loading.gif" data-src="https://cdn.jsdelivr.net/gh/leeJustice/Blog-source@master/img/集中式控制.png" alt="集中式控制" style="zoom: 67%;" />
+
+<h4 id="3-1-总线的基本概念-理解"><a href="#3-1-总线的基本概念-理解" class="headerlink" title="3.1 总线的基本概念(理解)"></a>3.1 总线的基本概念(理解)</h4><ul>
+<li>总线是连接多个部件的信息传输线，是各部件共享的传输介质。在某一时刻，只允许有一个部件向总线发送信息，而多个部件可以同时从总线上接收相同的信息。</li>
+</ul>
+<h4 id="3-2-总线的分类-理解"><a href="#3-2-总线的分类-理解" class="headerlink" title="3.2 总线的分类(理解)"></a>3.2 总线的分类(理解)</h4><ul>
+<li><p><code>片内总线</code>：芯片内部的总线。</p>
+</li>
+<li><p><code>系统总线</code>：</p>
+<ul>
+<li><em>数据总线</em>：传输各功能部件之间的数据信息。</li>
+<li><em>地址总线</em>：指出数据总线上的源数据或目的数据在主存单元的地址或I/O设备的地址。</li>
+<li><em>控制总线</em>：使各部件能在不同时刻占有总线使用权，是用来发出各种控制信号的传输线。</li>
+</ul>
+</li>
+<li><p><code>通讯总线</code>：用于计算机系统之间或计算机系统与其他系统（如控制仪表、移动通信等）之间的通信。</p>
+</li>
+</ul>
+<h4 id="3-3-总线特性及性能指标-理解"><a href="#3-3-总线特性及性能指标-理解" class="headerlink" title="3.3 总线特性及性能指标(理解)"></a>3.3 总线特性及性能指标(理解)</h4><h5 id="3-3-1-总线特性"><a href="#3-3-1-总线特性" class="headerlink" title="3.3.1 总线特性"></a>3.3.1 总线特性</h5><ul>
+<li><p><code>机械特性</code>：指总线在机械连接方式上的一些性能，如插头与插座使用的标准，它们的几何尺寸、形状、引脚的个数以及排列的顺序，接头处的可靠接触等。</p>
+</li>
+<li><p><code>电气特性</code>：指总线的每一根传输线上信号的传递方向和有效的电平范围。</p>
+</li>
+<li><p><code>功能特性</code>：指总线中每根传输线的功能。</p>
+</li>
+<li><p><code>时间特性</code>：指总线中的任一根线在什么时间内有效。</p>
+</li>
+</ul>
+<h5 id="3-3-2-性能指标"><a href="#3-3-2-性能指标" class="headerlink" title="3.3.2 性能指标"></a>3.3.2 性能指标</h5><ul>
+<li><code>总线宽度</code>：通常是指数据总线的根数，用bit （位）表示，如8 位、16 位、32 位、64 位（即8根、16 根、32 根、64 根）。</li>
+<li><code>总线带宽</code>：总线带宽可理解为总线的数据传输速率，即单位时间内总线上传输数据的位数，通常用每秒传输信息的字节数来衡量，单位可用MBps （兆字节每秒）表示。</li>
+<li><code>时钟同步/异步</code>：总线上的数据与时钟同步工作的总线称为同步总线，与时钟不同步工作的总线称为异步总线。</li>
+<li><code>总线复用</code>：一条信号线上分时传送两种信号。</li>
+<li><code>信号线数</code>：地址总线、数据总线和控制总线三种总线数的总和。</li>
+<li><code>总线控制方式</code>：包括突发工作、自动配置、仲裁方式、逻辑方式、计数方式等。</li>
+<li><code>其他指标</code>：如负载能力、电源电压、总线宽度能否扩展等。</li>
+</ul>
+<h4 id="3-5-2-总线通信控制-了解"><a href="#3-5-2-总线通信控制-了解" class="headerlink" title="3.5.2 总线通信控制(了解)"></a>3.5.2 总线通信控制(了解)</h4><p>总线通信控制主要解决通信双方如何获知传输开始和传输结束，以及通信双方如何协调如何配合。通常用四种方式：同步通信、异步通信、半同步通信和分离式通信。一个总线周期（完成一次总线操作的时间）分为四个阶段：申请分配阶段、寻址阶段、传数阶段、结束阶段。</p>
+<ul>
+<li><p><code>同步通信</code>：通信双方由统一时标控制数据传送，一般用于总线长度较短、各部件存取时间比较一致的场合。在同步通信的总线系统中，总线传输周期越短，数据线的位数越多，直接影响总线的数据传输率。</p>
+</li>
+<li><p><code>异步通信</code>：克服了同步通信的缺点，允许各模块速度的不一致性，给设计者充分的灵活性和选择余地。采用应答方式在主模块发出请求一直等待从模块反馈回来的响应，才开始通信。主从模块之间增加两条应答线。异步通信可用于并行传送或串行传送、异步串行通信的数据传送速率用<a href="[https://baike.baidu.com/item/%E6%B3%A2%E7%89%B9%E7%8E%87](https://baike.baidu.com/item/波特率)">波特率</a>来衡量。</p>
+<ul>
+<li><em>不互锁方式</em>：主模块发出请求信号后，不必等待接到从模块的回答信号，而是经过一段时间，确认从模块已收到请求信号后，便撤销其请求信号；从模块接到请求信号后，在条件允许时发出回答信号，并且经过一段时间（这段时间的设置对不同设备而言是不同的）确认主模块已收到回答信号后，自动撤销回答信号。可见通信双方并无互锁关系。例如， CPU 向主存写信息， CPU 要先后给出地址信号、写命令以及写人数据，即采用此种方式。</li>
+<li><em>半互锁方式</em>：主模块发出请求信号，必须待接到从模块的回答信号后再撤销其请求信号，有互锁关系；而从模块在接到请求信号后发出回答信号，但不必等待获知主模块的请求信号已经撤销，而是隔一段时间后自动撤销其回答信号，无互锁关系。由于一方存在互锁关系，一方不存在互锁关系，故称半互锁方式。</li>
+<li><em>全互锁方式</em>：主模块发出请求信号，必须待从模块回答后再撤销其请求信号；从模块发出回答信号，必须待获知主模块请求信号已撤销后，再撤销其回答信号。</li>
+</ul>
+</li>
+<li><p><code>半同步通信</code>：半同步通信集同步与异步通信之优点，既保留了同步通信的基本特点，如所有的地址、命令、数据信号的发出时间，都严格参照系统时钟的某个前沿开始，而接收方都采用系统时钟后沿时刻来进行判断识别。同时又像异步通信那样，允许不同速度的模块和谐地工作。为此增设了一条”等待”(WAIT) 响应信号线，采用插入时钟（等待）周期的措施来协调通信双方的配合问题。</p>
+</li>
+<li><p><code>分离式通信</code>：这种方式控制比较复杂，一般在普通微型计算机系统很少采用。</p>
+</li>
+</ul>
+<h3 id="第四章-存储器"><a href="#第四章-存储器" class="headerlink" title="第四章 存储器"></a>第四章 存储器</h3><ul>
+<li>重点章节-需<code>重点记忆</code>理解练习</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">掌握</th>
+<th align="left">理解</th>
+<th align="left">了解</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">4.2.5 存储器与CPU的连接-扩容(可能出设计)</td>
+<td align="left">4.1 概述</td>
+<td align="left">4.2 中其它的小节</td>
+</tr>
+<tr>
+<td align="left">4.3 高速缓冲存储器-Cache(替换的原理、方法)</td>
+<td align="left">4.2.3 随机存取存储器</td>
+<td align="left">4.4 辅助存储器(磁盘、光盘等工作原理)</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">4.2.4 只读存储器</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">4.2.6 存储器的校验(奇偶、汉明码等)</td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+<h4 id="4-2-5-存储器与CPU的连接-扩容-掌握"><a href="#4-2-5-存储器与CPU的连接-扩容-掌握" class="headerlink" title="4.2.5 存储器与CPU的连接-扩容(掌握)"></a>4.2.5 存储器与CPU的连接-扩容(掌握)</h4><ul>
+<li><p><code>存储容量的扩容</code></p>
+<ul>
+<li><p><em>位扩展</em>：位扩展是指增加存储字长。</p>
+<p><img src= "/img/loading.gif" data-src="https://cdn.jsdelivr.net/gh/leeJustice/Blog-source@master/img/%E4%BD%8D%E6%89%A9%E5%B1%95.png" alt="位扩展"></p>
+</li>
+<li><p><em>字扩展</em>：字扩展是指增加存储器字的数量。</p>
+<p><img src= "/img/loading.gif" data-src="https://cdn.jsdelivr.net/gh/leeJustice/Blog-source@master/img/%E5%AD%97%E6%89%A9%E5%B1%95.png" alt="字扩展"></p>
+</li>
+<li><p><em>字、位扩展</em>：孚位扩展是指既增加存储字的数量，又增加存储字长。</p>
+<p><img src= "/img/loading.gif" data-src="https://cdn.jsdelivr.net/gh/leeJustice/Blog-source@master/img/%E5%AD%97%E3%80%81%E4%BD%8D%E6%89%A9%E5%B1%95.png" alt="字、位扩展"></p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="4-3-高速缓冲存储器-掌握"><a href="#4-3-高速缓冲存储器-掌握" class="headerlink" title="4.3 高速缓冲存储器(掌握)"></a>4.3 高速缓冲存储器(掌握)</h4><ul>
+<li><p>工作原理：主存由$2^n$个可编址的字组成，每个字有惟一的n 位地址。为了与Cache 映射，将主存与缓存都分成若干块，每块内又包含若干个字，并使它们的块大小相同（即块内的字数相同）。这就将主存的地址分成两段：高m 位表示主存的块地址，低b 位表示块内地址，则$2^m$ = M 表示主存的块数。同样，缓存的地址也分为两段：高c 位表示缓存的块号，低b 位表示块内地址，则$2^c$= C表示缓存块数，且C 远小于M。主存与缓存地址中都用b 位表示其块内字数，即B = $2^b$ 反映了块的大小，称B 为块长。</p>
+<p><img src= "/img/loading.gif" data-src="https://cdn.jsdelivr.net/gh/leeJustice/Blog-source@master/img/cache%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86.png" alt="cache工作原理"></p>
+</li>
+<li><p>命中率：在一个程序执行期间，设$N_c$为访问Cache 的总命中次数， $N_m$ 为访问主存的总次数，则命中率h 为<br>$$<br>h = \frac{N_c}{N_c+N_m}<br>$$<br>设$t_c$为命中时的Cache 访问时间， $t_m$为未命中时的主存访问时间， (1 - h) 表示未命中率，则<br>Cache-主存系统的平均访问时间$t_0$为<br>$$<br>t_0 = ht_c + (1-h)t_m<br>$$<br>当然，以较小的硬件代价使Cache-主存系统的平均访问时间$t_0$越接近千$t_c$越好。用e 表示访问效率，则有</p>
+<img src= "/img/loading.gif" data-src="http://latex.codecogs.com/gif.latex?e = \frac{t_c}{t_0}*100\% = \frac{t_c}{ht_c+(1-h)t_m}*100\%" />
+
+<p><img src= "/img/loading.gif" data-src="https://cdn.jsdelivr.net/gh/leeJustice/Blog-source@master/img/%E5%91%BD%E4%B8%AD%E7%8E%87.png" alt="例题"></p>
+</li>
+<li><p>映射机制</p>
+<ul>
+<li><p>直接映射</p>
+<p><img src= "/img/loading.gif" data-src="https://cdn.jsdelivr.net/gh/leeJustice/Blog-source@master/img/%E7%9B%B4%E6%8E%A5%E6%98%A0%E5%B0%84.png" alt="直接映射"></p>
+<p> 这种方式的优点是实现简单，只需利用主存地址的某些位直接判断，即可确定所需字块是否在缓存中。</p>
+</li>
+<li><p>全相连映射</p>
+<p><img src= "/img/loading.gif" data-src="https://cdn.jsdelivr.net/gh/leeJustice/Blog-source@master/img/%E5%85%A8%E7%9B%B8%E8%BF%9E%E6%98%A0%E5%B0%84.png" alt="全相连映射"></p>
+<p>这种方式所需的逻辑电路甚多，成本较高，实际的Cache 还要采用各种措施来减少地址的比较次数。</p>
+</li>
+<li><p>组相连映射</p>
+<p><img src= "/img/loading.gif" data-src="https://cdn.jsdelivr.net/gh/leeJustice/Blog-source@master/img/%E7%BB%84%E7%9B%B8%E8%BF%9E%E6%98%A0%E5%B0%84.png" alt="组相连映射"></p>
+</li>
+</ul>
+<p>组相联映射的性能及其复杂性介于直接映射和全相联映射两者之间，当r = 0 时是直接映射方式，当r = c 时是全相联映射方式。</p>
+<ul>
+<li><p>例题</p>
+<p><img src= "/img/loading.gif" data-src="https://cdn.jsdelivr.net/gh/leeJustice/Blog-source@master/img/1DKN%7DJM~B$G%7B1%5D8647_DM%5D4.png" alt="例题"></p>
+<p><img src= "/img/loading.gif" data-src="https://cdn.jsdelivr.net/gh/leeJustice/Blog-source@master/img/1111.png" alt="例题"></p>
+<p><img src= "/img/loading.gif" data-src="https://cdn.jsdelivr.net/gh/leeJustice/Blog-source@master/img/@W$4FTNZXMS8%5D%60THGNVY4XB.png" alt="解析"></p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="4-1-概述-理解"><a href="#4-1-概述-理解" class="headerlink" title="4.1 概述(理解)"></a>4.1 概述(理解)</h4><h5 id="4-1-1-存储器分类"><a href="#4-1-1-存储器分类" class="headerlink" title="4.1.1 存储器分类"></a>4.1.1 存储器分类</h5><p>按照介质分类：半导体存储器、磁表面存储器、磁芯存储器、光盘存储器。</p>
+<p>按照存取方式分类：随机存储器RAM、只读存储器ROM、串行访问存储器。</p>
+<p>按在计算机中的作用分类：存储器、辅助存储器、缓冲存储器。</p>
+<h4 id="4-2-3-随机存取存储器-理解"><a href="#4-2-3-随机存取存储器-理解" class="headerlink" title="4.2.3 随机存取存储器(理解)"></a>4.2.3 随机存取存储器(理解)</h4><p>随机存取存储器按其存储信息的原理不同，可分为静态RAM 和动态RAM 两大类。 </p>
+<ul>
+<li>静态RAM：由于静态RAM 是用触发器工作原理存储信息，因此即使信息读出后，它仍保持其原状态，不需要再生。但电源掉电时，原存信息丢失，故它属易失性半导体存储器。</li>
+<li>动态RAM：即使电源不掉电，信息也会自动消失。为此，必须在2ms内对其所有存储单元恢复一次原状态，这个过程称为再生或刷新。由千它与静态RAM 相比，具有集成度更高、功耗更低等特点，目前被各类计笲机广泛应用。</li>
+</ul>
+<h4 id="4-2-4-只读存储器-理解"><a href="#4-2-4-只读存储器-理解" class="headerlink" title="4.2.4 只读存储器(理解)"></a>4.2.4 只读存储器(理解)</h4><p>按照ROM的原始定义，一旦注入原始信息即不能改变，但是随着用户的需要，总是希望能任意的修改ROM内的信息，这便出现了PROM、EPROM、EEPROM等等。</p>
+<ul>
+<li>PROM：一次性编程的制度存储器。</li>
+<li>EPROM：一种可擦除可编程只读存储。</li>
+<li>EEPROM：在联机条件下，用宇擦除方式或页擦除方式，既可局部擦写，又可全部擦写的EPROM。</li>
+</ul>
+<h4 id="4-2-6存储器的校验-理解"><a href="#4-2-6存储器的校验-理解" class="headerlink" title="4.2.6存储器的校验(理解)"></a>4.2.6存储器的校验(理解)</h4><p><code>带我理解一下这一章节，时间太久了，渐渐的忘了。。。。。。。。</code></p>
+<h4 id="4-4-辅助存储器-了解"><a href="#4-4-辅助存储器-了解" class="headerlink" title="4.4 辅助存储器(了解)"></a>4.4 辅助存储器(了解)</h4><p>自己看看书了解一下就好，这里就不过多的赘述了，详情在课本的124页上下的部分。考试据我猜测顶多是一个选择题或者是填空题的份额。</p>
+<h3 id="第五章-输入输出系统"><a href="#第五章-输入输出系统" class="headerlink" title="第五章 输入输出系统"></a>第五章 输入输出系统</h3><ul>
+<li>相对来讲，比较简单，但仍<code>不能掉以轻心</code></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">掌握</th>
+<th align="left">理解</th>
+<th align="left">了解</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">5.5 程序中断方式</td>
+<td align="left">5.1 概述</td>
+<td align="left">5.2 I/O设备</td>
+</tr>
+<tr>
+<td align="left">5.6 DMA方式</td>
+<td align="left">5.4 程序查询方式</td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+<h4 id="5-5-程序中断方式-掌握"><a href="#5-5-程序中断方式-掌握" class="headerlink" title="5.5 程序中断方式(掌握)"></a>5.5 程序中断方式(掌握)</h4><h5 id="5-5-1-中断的概念"><a href="#5-5-1-中断的概念" class="headerlink" title="5.5.1 中断的概念"></a>5.5.1 中断的概念</h5><p>计算机在执行程序的过程中，当出现异常情况或特殊请求时，计算机停止现行程序的运行，转向对这些异常情况或特殊请求的处理，处理结束后再返回到现行程序的间断处，继续执行原程序。这就叫做”中断”。</p>
+<h5 id="5-5-2-I-O中断的产生"><a href="#5-5-2-I-O中断的产生" class="headerlink" title="5.5.2 I/O中断的产生"></a>5.5.2 I/O中断的产生</h5><p>I/O设备与CPU由于本身的机电特性的影响而产生的速度差距，在设备准备的同时，CPU 不作无谓的等待，而继续执行现行程序，只有当I/O设备准备就绪向CPU提出请求后，再暂时中断CPU现行程序转人I/O服务程序，这便产生了I/O中断。</p>
+<h5 id="5-5-3-程序中断方式的接口电路"><a href="#5-5-3-程序中断方式的接口电路" class="headerlink" title="5.5.3 程序中断方式的接口电路"></a>5.5.3 程序中断方式的接口电路</h5><p>中断请求触发器与中断屏蔽触发器</p>
+<p>略。</p>
+<h5 id="5-5-4-I-O中断处理过程"><a href="#5-5-4-I-O中断处理过程" class="headerlink" title="5.5.4 I/O中断处理过程"></a>5.5.4 I/O中断处理过程</h5><p><img src= "/img/loading.gif" data-src="https://cdn.jsdelivr.net/gh/leeJustice/Blog-source@master/img/%E7%A8%8B%E5%BA%8F%E4%B8%AD%E6%96%AD%E6%96%B9%E5%BC%8F%E6%8E%A5%E5%8F%A3%E7%94%B5%E8%B7%AF%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%BB%84%E6%88%90.png" alt=""></p>
+<p><img src= "/img/loading.gif" data-src="https://cdn.jsdelivr.net/gh/leeJustice/Blog-source@master/img/%E4%B8%AD%E6%96%AD%E5%A4%84%E7%90%86%E8%BF%87%E7%A8%8B.png" alt=""></p>
+<p><img src= "/img/loading.gif" data-src="https://cdn.jsdelivr.net/gh/leeJustice/Blog-source@master/img/%E4%B8%AD%E6%96%AD%E5%A4%84%E7%90%86%E8%BF%87%E7%A8%8B2.png" alt=""></p>
+<h5 id="5-5-5-中断服务程序的流程"><a href="#5-5-5-中断服务程序的流程" class="headerlink" title="5.5.5 中断服务程序的流程"></a>5.5.5 中断服务程序的流程</h5><ul>
+<li>保护现成</li>
+<li>中断服务</li>
+<li>恢复现场</li>
+<li>中断返回</li>
+</ul>
+<h4 id="5-6-DMA方式-掌握"><a href="#5-6-DMA方式-掌握" class="headerlink" title="5.6 DMA方式(掌握)"></a>5.6 DMA方式(掌握)</h4><ul>
+<li><p>原理：数据传送不经过 CPU，由 DMA 控制器实现内存和外设、外设和外设之间的直接快速传递。</p>
+</li>
+<li><p>系统构成： DMA 作为主设备之一 – DMA 与 IO 接口集成 – DMA 提供专门 IO 总线。</p>
+</li>
+<li><p>两种工作状态：被动态(未获得总线的控制权，收到CPU控制)，主动态(获得总线控制权)。</p>
+</li>
+<li><p>传输步骤：</p>
+<ul>
+<li>申请：一个设备接口试图通过总线向另一个设备发送数据，先向 CPU 发送 DMA 信号。</li>
+<li>响应：CPU 收到 DMA 信号，当前总线周期结束后，按 DMA 信号优先级响应相应的 DMA 控制器。</li>
+<li>数据传送：DMA 收到 CPU 响应，获得总线控制权，开始直接数据传送。</li>
+<li>传送结束：设备向 CPU 发送 DMA 结束信号，交换总线控制权。</li>
+</ul>
+</li>
+<li><p>DMA 操作类型：</p>
+<ul>
+<li>数据传送：源地址数据传到目的地址。</li>
+<li>数据校验：不传输，只校验某数据块内部的每个字节。</li>
+<li>数据检索：不传输，只在制定内存区域内查找某个关键字或某几个数据位是否存在</li>
+</ul>
+</li>
+<li><p>DMA 操作方式：</p>
+<ul>
+<li>单字节传输模式：每次 DMA 操作传送一个字节。</li>
+<li>块传输模式：每次传送多个字节，有个当前字节计数器，+1 +1 +1</li>
+<li>请求传输模式：DMA 控制器询问外设，当外设请求信号无效时，暂停传输（不释放总线）；再次有效再继续传输级联传输模式：多个 DMA 级联，分布式</li>
+</ul>
+</li>
+<li><p>DMA 传输模式：</p>
+<ul>
+<li>停止 CPU 访问内存：传输速率高的设备传输时有优势</li>
+<li>周期挪用：DMA 挪用一个或几个内存周期。若此时 CPU 不需要访存则不冲突，若冲突则 DMA 优先</li>
+<li>DMA 与 CPU 交替访存：直接交替访存，不需要浪费时间</li>
+</ul>
+</li>
+</ul>
+<h4 id="5-1-概述-理解"><a href="#5-1-概述-理解" class="headerlink" title="5.1 概述(理解)"></a>5.1 概述(理解)</h4><h5 id="5-1-1-输入输出系统的发展概况"><a href="#5-1-1-输入输出系统的发展概况" class="headerlink" title="5.1.1 输入输出系统的发展概况"></a>5.1.1 输入输出系统的发展概况</h5><ul>
+<li>早期阶段</li>
+<li>接口模块和DMA阶段</li>
+<li>具有通道结构的阶段</li>
+<li>具有 I/O 处理机的阶段</li>
+</ul>
+<h5 id="5-1-2-输入输出系统的组成"><a href="#5-1-2-输入输出系统的组成" class="headerlink" title="5.1.2 输入输出系统的组成"></a>5.1.2 输入输出系统的组成</h5><ul>
+<li>I/O 软件</li>
+<li>I/O 硬件</li>
+</ul>
+<h5 id="5-1-4-I-O-设备与主机信息传送的控制方式"><a href="#5-1-4-I-O-设备与主机信息传送的控制方式" class="headerlink" title="5.1.4 I/O 设备与主机信息传送的控制方式"></a>5.1.4 I/O 设备与主机信息传送的控制方式</h5><p>I/O 设备与主机交换信息时，共有5 种控制方式：<code>程序查询方式</code>、<code>程序中断方式</code>、<code>直接存储器存取方式(DMA)</code> 、<code>I/O 通道方式</code>、<code>I/O 处理机方式</code>。</p>
+<h4 id="5-4-程序查询方式-理解"><a href="#5-4-程序查询方式-理解" class="headerlink" title="5.4 程序查询方式(理解)"></a>5.4 程序查询方式(理解)</h4><p>5.4.1 程序查询流程</p>
+<ul>
+<li>核心任务是时时刻刻的查询I/O 设备是都已经准备就绪。</li>
+</ul>
+<p><img src= "/img/loading.gif" data-src="https://cdn.jsdelivr.net/gh/leeJustice/Blog-source@master/img/%E7%A8%8B%E5%BA%8F%E6%9F%A5%E8%AF%A2%E6%96%B9%E5%BC%8F.png" alt="程序查询流程"></p>
+<p>例题</p>
+<p><img src= "/img/loading.gif" data-src="https://cdn.jsdelivr.net/gh/leeJustice/Blog-source@master/img/20200626110915.png" alt="例题"></p>
+<h4 id="5-2-I-O-设备-了解"><a href="#5-2-I-O-设备-了解" class="headerlink" title="5.2 I/O 设备(了解)"></a>5.2 I/O 设备(了解)</h4><p>大致分三类：人机交互设备、计算机信息的存储设备、机-机通信设备。</p>
+<p>不过多赘述，这部分内容很简单，都是一些常识问题，就是说一下常见的输入输出设备有哪些，介绍一下简单的应用。详情-&gt;略。</p>
+<h3 id="第六章-计算机的运算方法"><a href="#第六章-计算机的运算方法" class="headerlink" title="第六章 计算机的运算方法"></a>第六章 计算机的运算方法</h3><ul>
+<li>非常重要-建议勤加练习-肯定是<code>大题-计算题-重点练习</code>。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">掌握</th>
+<th align="left">理解</th>
+<th align="left">了解</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">6.2 数的定点表示和浮点表示</td>
+<td align="left">6.1 无符号数和有符号数</td>
+<td align="left">6.4.3 浮点运损所需的硬件配置</td>
+</tr>
+<tr>
+<td align="left">6.3.2 加法与减法运算</td>
+<td align="left">6.3.1 移位运算</td>
+<td align="left">6.5.1 ALU电路</td>
+</tr>
+<tr>
+<td align="left">6.3.3 乘法运算</td>
+<td align="left">6.3.4 除法运算</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">6.4 浮点四则运算</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">6.5.2 快速进位链 ※</td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+<h3 id="第六章-计算机的运算方法-1"><a href="#第六章-计算机的运算方法-1" class="headerlink" title="第六章 计算机的运算方法"></a>第六章 计算机的运算方法</h3><h4 id="6-2-数的定点表示和浮点表示"><a href="#6-2-数的定点表示和浮点表示" class="headerlink" title="6.2 数的定点表示和浮点表示"></a>6.2 数的定点表示和浮点表示</h4><h5 id="6-2-1-数的定点表示"><a href="#6-2-1-数的定点表示" class="headerlink" title="6.2.1 数的定点表示"></a>6.2.1 数的定点表示</h5><p>小数点固定在某一位置的数称为定点数，有下面两种形式。</p>
+<img src= "/img/loading.gif" data-src="https://cdn.jsdelivr.net/gh/leeJustice/Blog-source@master/img/5bd44adc59183.webp" style="zoom:50%;" />
+
+<p>左侧的是纯小数，右侧的是纯整数。下方分别是他们的表示范围。在定点机中，由于小数点的位置固定不变，故当机器处理的数不是纯小数或纯整数时，必须乘上一个比例因子，否则会产生<code>溢出</code>。</p>
+<h5 id="6-2-2-数的浮点表示"><a href="#6-2-2-数的浮点表示" class="headerlink" title="6.2.2 数的浮点表示"></a>6.2.2 数的浮点表示</h5><p>浮点数就是小数点位置是变动的，如图所示。</p>
+<img src= "/img/loading.gif" data-src="https://cdn.jsdelivr.net/gh/leeJustice/Blog-source@master/img/iceTYT.png#shadow" style="zoom:50%;" />
+
+<p>格式是这样的</p>
+<img src= "/img/loading.gif" data-src="https://cdn.jsdelivr.net/gh/leeJustice/Blog-source@master/img/ice7fU.png" style="zoom:50%;" />
+
+<p>浮点数的表示范围</p>
+<img src= "/img/loading.gif" data-src="https://cdn.jsdelivr.net/gh/leeJustice/Blog-source@master/img/icneKJ.png#shadow" style="zoom:50%;" />
+
+<p>浮点数的规格化：为了提高浮点数的精度，其尾数必须为规格化数。如果不是规格化数，就要通过修改阶码并<br>同时左右移尾数的办法，使其变成规格化数。将非规格化数转换成规格化数的过程称为规格化。对于基数不同的浮点数，因其规格化数的形式不同，规格化过程也不同。当基数为2 时，尾数最高位为1 的数为规格化数。规格化时，尾数左移一位，阶码减1 （这种规格化称为向左规格化，简称左规）；尾数右移一位，阶码加1 （这种规格化称为向右规格化，简称右规）。</p>
+<h5 id="6-2-3-定点数和浮点数的比较"><a href="#6-2-3-定点数和浮点数的比较" class="headerlink" title="6.2.3 定点数和浮点数的比较"></a>6.2.3 定点数和浮点数的比较</h5><ul>
+<li>当浮点机和定点机中数的位数相同时，浮点数的表示范围比定点数的大得多。</li>
+<li>当浮点数为规格化数时，其相对精度远比定点数高。</li>
+<li>浮点数运算要分阶码部分和尾数部分，而且运算结果都要求规格化，故浮点运算步骤比定点运算步骤多，运算速度比定点运算的低，运算线路比定点运算的复杂。</li>
+<li>在溢出的判断方法上，浮点数是对规格化数的阶码进行判断，而定点数是对数值本身进行判断。<ul>
+<li>例如，小数定点机中的数，其绝对值必须小于1 ，否则”溢出“，此时要求机器停止运算，进行处理。为了防止溢出，上机前必须选择比例因子，这个工作比较麻烦，给编程带来不便。而浮点数的表示范围远比定点数大，仅当“上溢”时机器才停止运算，故一般不必考虑比例因子的选择。</li>
+<li>例题1：<img src= "/img/loading.gif" data-src="https://cdn.jsdelivr.net/gh/leeJustice/Blog-source@master/img/icuMLj.png#shadow" style="zoom:50%;" /></li>
+<li>例题2：<img src= "/img/loading.gif" data-src="https://cdn.jsdelivr.net/gh/leeJustice/Blog-source@master/img/icu6fK.png#shadow" style="zoom:50%;" /></li>
+</ul>
+</li>
+</ul>
+<h5 id="IEE754标准的浮点数的表示方法"><a href="#IEE754标准的浮点数的表示方法" class="headerlink" title="IEE754标准的浮点数的表示方法"></a>IEE754标准的浮点数的表示方法</h5><img src= "/img/loading.gif" data-src="https://cdn.jsdelivr.net/gh/leeJustice/Blog-source@master/img/icKpt0.png#shadow" style="zoom: 50%;" />
+
+<h4 id="6-3-2-定点数加减运算"><a href="#6-3-2-定点数加减运算" class="headerlink" title="6.3.2 定点数加减运算"></a>6.3.2 定点数加减运算</h4><p>在介绍加减法之前，先明确一下移位的运算规则。</p>
+<img src= "/img/loading.gif" data-src="https://cdn.jsdelivr.net/gh/leeJustice/Blog-source@master/img/icKf3T.png#shadow" style="zoom:50%;" />
+
+<p>补码运算公式</p>
+<img src= "/img/loading.gif" data-src="https://cdn.jsdelivr.net/gh/leeJustice/Blog-source@master/img/icQL6O.png#shadow" style="zoom:50%;" />
+
+<p>算术移位和逻辑移位的区别</p>
+<img src= "/img/loading.gif" data-src="https://cdn.jsdelivr.net/gh/leeJustice/Blog-source@master/img/icMbLQ.png#shadow" style="zoom:50%;" />
+
+<p>举例：</p>
+<img src= "/img/loading.gif" data-src="https://cdn.jsdelivr.net/gh/leeJustice/Blog-source@master/img/icQx7d.png#shadow" style="zoom:50%;" />
+
+<img src= "/img/loading.gif" data-src="https://cdn.jsdelivr.net/gh/leeJustice/Blog-source@master/img/icli1f.png#shadow" style="zoom:50%;" />
+
+<p>溢出判断：参加操作的<strong>两个数</strong>（减法时即为被减数和 “求补” 以后的减数）<strong>符号为相同，其结果的符号与源操作数的符号不同，即为溢出</strong></p>
+<h4 id="6-3-3-乘法运算"><a href="#6-3-3-乘法运算" class="headerlink" title="6.3.3 乘法运算"></a>6.3.3 乘法运算</h4><img src= "/img/loading.gif" data-src="https://i.loli.net/2018/10/28/5bd53a3931b45.png#shadow" alt="img" style="zoom:50%;" />
+
+<p>由上式可见，两数相乘的过程，可视作加法和移位两种运算，这对计算机来说是非常容易实现的</p>
+<ul>
+<li>原码乘法</li>
+</ul>
+<img src= "/img/loading.gif" data-src="https://i.loli.net/2018/10/28/5bd54cb322285.png#shadow" alt="img" style="zoom:50%;" />
+
+<p>示例：</p>
+<img src= "/img/loading.gif" data-src="https://s1.ax1x.com/2018/10/28/icqdv4.png#shadow" alt="icqdv4.png" style="zoom:50%;" />
+
+
+
+<p>补码乘法：</p>
+<ul>
+<li>符号位单独异或运算</li>
+<li>尾数部分绝对值相乘</li>
+</ul>
+<p>例题</p>
+<p>用原码阵列乘法器、补码阵列乘法器分别计算 x*y<br>（1）x=11011，y=-11111<img src= "/img/loading.gif" data-src="https://s1.ax1x.com/2018/10/28/icj0W6.png#shadow" alt="icj0W6.png" style="zoom:50%;" /><img src= "/img/loading.gif" data-src="https://s1.ax1x.com/2018/10/28/icjyOe.png#shadow" alt="icjyOe.png"><img src= "/img/loading.gif" data-src="https://s1.ax1x.com/2018/10/28/icj0W6.png#shadow" alt="icj0W6.png" style="zoom:50%;" /><img src= "/img/loading.gif" data-src="https://s1.ax1x.com/2018/10/28/icjyOe.png#shadow" alt="icjyOe.png"></p>
+<p>（2）x=-01011，y=11001</p>
+<img src= "/img/loading.gif" data-src="https://s1.ax1x.com/2018/10/28/icj5Sf.png#shadow" alt="icj5Sf.png" style="zoom:50%;" />
+
+<img src= "/img/loading.gif" data-src="https://s1.ax1x.com/2018/10/28/icjWFI.png#shadow" alt="icjWFI.png" style="zoom:50%;" />
+
+<h3 id="第七章-指令系统"><a href="#第七章-指令系统" class="headerlink" title="第七章 指令系统"></a>第七章 指令系统</h3><ul>
+<li>寻址方式比较多-建立<code>熟知</code></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">掌握</th>
+<th align="left">理解</th>
+<th align="left">了解</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">7.3 寻址方式</td>
+<td align="left">7.1 机器指令</td>
+<td align="left">7.5.2 RISC的主要特征</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">7.2 操作数类型和操作类型</td>
+<td align="left">7.5.3 RISC和CISC的比较</td>
+</tr>
+</tbody></table>
+<h3 id="第八章-CPU的结构与功能"><a href="#第八章-CPU的结构与功能" class="headerlink" title="第八章 CPU的结构与功能"></a>第八章 CPU的结构与功能</h3><ul>
+<li>此章节没有了解的内容-全部是掌握、理解，<code>非常重要-重点记忆-勤加练习</code></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">掌握</th>
+<th align="left">理解</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">8.3 指令流水</td>
+<td align="left">8.1 CPU的结构</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">8.2 指令周期</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">8.4 中断系统</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">8.5 控制单元的功能(唐书8.2)</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">8.6 组合逻辑设计(唐书10.1，特点和基本步骤)</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">8.7 微程序设计(唐书10.2，特点和基本步骤)</td>
+</tr>
+</tbody></table>
+<p>``</p>
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">JusticeLee</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://justicelee.top/2020/06/28/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E9%87%8D%E7%82%B9/">http://justicelee.top/2020/06/28/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E9%87%8D%E7%82%B9/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://justicelee.top" target="_blank">JusticeLee's Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"/><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-full"><a href="/2020/06/28/pain/"><img class="prev-cover" data-src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">pain</div></div></a></div></nav><hr><div id="post-comment"><div class="comment_headling"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div><div class="vcomment" id="vcomment"></div><script src="https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js"></script><script>var requestSetting = function (from,set) {
+  var from = from
+  var setting = set.split(',').filter(function(item){
+  return from.indexOf(item) > -1
+  });
+  setting = setting.length == 0 ? from :setting;
+  return setting
+}
+
+var guestInfo = requestSetting(['nick','mail','link'],'nick,mail,link')
+var requiredFields = requestSetting(['nick','mail'],'nick,mail')
+
+window.valine = new Valine({
+  el:'#vcomment',
+  appId: '',
+  appKey: '',
+  placeholder: 'Please leave your footprints',
+  avatar: 'monsterid',
+  meta: guestInfo,
+  pageSize: '10',
+  lang: 'en',
+  recordIP: false,
+  serverURLs: '',
+  emojiCDN: '',
+  emojiMaps: "",
+  enableQQ: false,
+  requiredFields: requiredFields
+});</script></div></article></main><footer id="footer" data-type="color"><div id="footer-wrap"><div class="copyright">&copy;2020 By JusticeLee</div><div class="framework-info"><span>驱动 </span><a href="https://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 </span><a href="https://github.com/jerryc127/hexo-theme-butterfly" target="_blank" rel="noopener"><span>Butterfly</span></a></div></div></footer></div><section class="rightside" id="rightside"><div id="rightside-config-hide"><button id="readmode" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="font_plus" title="放大字体"><i class="fas fa-plus"></i></button><button id="font_minus" title="缩小字体"><i class="fas fa-minus"></i></button><button class="translate_chn_to_cht" id="translateLink" title="简繁转换">繁</button><button id="darkmode" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" title="设置"><i class="fas fa-cog"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="scroll_to_comment fas fa-comments"></i></a><button class="close" id="mobile-toc-button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></section><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  CommonHTML: {
+    linebreaks: { automatic: true, width: "90% container" }
+  },
+  "HTML-CSS": { 
+    linebreaks: { automatic: true, width: "90% container" }
+  },
+  "SVG": { 
+    linebreaks: { automatic: true, width: "90% container" }
+  }
+});
+</script><script type="text/x-mathjax-config">MathJax.Hub.Queue(function() {
+  var all = MathJax.Hub.getAllJax(), i;
+  for (i=0; i < all.length; i += 1) {
+    all[i].SourceElement().parentNode.className += ' has-jax';
+  }
+});
+</script><script src="https://cdn.jsdelivr.net/npm/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css"><script>$(function () {
+  $('span.katex-display').wrap('<div class="katex-wrap"></div>')
+})</script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module" defer></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js" async></script></body></html>
